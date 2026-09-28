@@ -49,6 +49,9 @@ h2{font-family:'Noto Serif KR',serif;font-weight:500;font-size:clamp(26px,4vw,38
 .card p{margin:0;color:var(--soft);font-size:15px}
 .groups{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
 .groups h4{color:var(--gold);font-weight:500;font-size:13px;letter-spacing:.1em;margin:0 0 8px}
+.sub2{margin-top:56px}
+.sub2.groups{grid-template-columns:repeat(2,1fr)}
+.sub2>h4{color:var(--gold);font-weight:500;font-size:13px;letter-spacing:.1em;margin:0 0 8px}
 .row{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
 .row em{font-style:normal;color:var(--soft);white-space:nowrap;font-size:13.5px}
 .lnk{display:flex;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);text-decoration:none}
@@ -56,7 +59,7 @@ h2{font-family:'Noto Serif KR',serif;font-weight:500;font-size:clamp(26px,4vw,38
 .lnk b{font-weight:500}
 .lnk span{color:var(--soft);font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 footer{max-width:1080px;margin:0 auto;padding:32px 24px 48px;border-top:1px solid var(--line);color:var(--soft);font-size:12.5px}
-@media(max-width:760px){nav{display:none}.two,.cards,.groups{grid-template-columns:1fr}.two{gap:8px}.sec{padding:64px 24px}.hero{padding:72px 24px 120px}.cta{display:none}}
+@media(max-width:760px){nav{display:none}.two,.cards,.groups,.sub2.groups{grid-template-columns:1fr}.two{gap:8px}.sec{padding:64px 24px}.hero{padding:72px 24px 120px}.cta{display:none}}
 </style>
 </head>
 <body>
@@ -87,9 +90,9 @@ footer{max-width:1080px;margin:0 auto;padding:32px 24px 48px;border-top:1px soli
   <div class="two">
     <h2><span data-l="ko">품질관리 담당<br>LEE JAEHOON입니다.</span><span data-l="en">LEE JAEHOON,<br>Quality Assurance.</span></h2>
     <div>
-      <p data-l="ko">자동차 부품 제조사에서 품질관리를 맡고 있습니다. 해외에서 들어오는 부품과 국내 현대기아에 공급되는 부품의 품질보증이 제 일입니다.</p>
+      <p data-l="ko">자동차 부품 제조사에서 10년 넘게 품질관리를 맡고 있습니다. 해외에서 들어오는 부품과 국내 현대기아에 공급되는 부품의 품질보증이 제 일입니다.</p>
       <p data-l="ko">본업에서 배운 꼼꼼함으로 본업 밖에서도 여러 파이프라인을 하나씩 만들어가고 있습니다. 블로그, 스마트스토어, 인스타그램을 운영하고 있고, 목표는 경제적 자유입니다.</p>
-      <p data-l="en">I work in quality assurance at an automotive parts manufacturer, covering parts sourced from overseas and parts supplied to Hyundai and Kia in Korea.</p>
+      <p data-l="en">I have worked in quality assurance at an automotive parts manufacturer for over a decade, covering parts sourced from overseas and parts supplied to Hyundai and Kia in Korea.</p>
       <p data-l="en">Carrying that discipline beyond my day job, I am building income pipelines one at a time. I run a blog, online stores, and an Instagram account, and the goal is financial freedom.</p>
     </div>
   </div>
@@ -124,6 +127,33 @@ footer{max-width:1080px;margin:0 auto;padding:32px 24px 48px;border-top:1px soli
     <div>
       <h4><span data-l="ko">목표</span><span data-l="en">GOAL</span></h4>
       <div class="row"><span data-l="ko">경제적 자유</span><span data-l="en">Financial freedom</span><em data-l="ko">도전 중</em><em data-l="en">In progress</em></div>
+    </div>
+  </div>
+
+  <div class="sub2">
+    <h4><span data-l="ko">경력 타임라인</span><span data-l="en">CAREER TIMELINE</span></h4>
+    <div class="row"><span data-l="ko">Dong Kook · 품질관리팀, 사원</span><span data-l="en">Dong Kook · QA team, Associate</span><em>2013.04 – 2016.01</em></div>
+    <div class="row"><span data-l="ko">호주 워킹홀리데이 · 랭기지스쿨</span><span data-l="en">Working holiday, Australia · Language school</span><em>2016.01 – 2017.07</em></div>
+    <div class="row"><span data-l="ko">연구기관 · 연구기획평가팀, 계약직</span><span data-l="en">Research institute · Project Planning &amp; Evaluation, Contract</span><em>2018.04 – 2019.01</em></div>
+    <div class="row"><span data-l="ko">ITW · 품질관리팀, 과장</span><span data-l="en">ITW · QA team, Manager</span><em data-l="ko">2019.01 – 현재</em><em data-l="en">2019.01 – Present</em></div>
+  </div>
+
+  <div class="groups sub2">
+    <div>
+      <h4><span data-l="ko">자격 · 교육</span><span data-l="en">CERTIFICATIONS</span></h4>
+      <div class="row"><span data-l="ko">6시그마 Green Belt</span><span data-l="en">Six Sigma Green Belt</span><em data-l="ko">한국품질재단</em><em data-l="en">Korea Quality Foundation</em></div>
+      <div class="row"><span data-l="ko">ISO9001·14001 내부심사원</span><span data-l="en">ISO 9001 / 14001 Internal Auditor</span><em data-l="ko">한국품질재단</em><em data-l="en">Korea Quality Foundation</em></div>
+      <div class="row"><span data-l="ko">전산회계 1급</span><span data-l="en">Computerized Accounting, Level 1</span><em data-l="ko">한국세무사협회</em><em data-l="en">Korea Assoc. of CTAs</em></div>
+      <div class="row"><span data-l="ko">전산세무 2급</span><span data-l="en">Computerized Tax Accounting, Level 2</span><em data-l="ko">한국세무사협회</em><em data-l="en">Korea Assoc. of CTAs</em></div>
+      <div class="row"><span data-l="ko">회계관리 2급</span><span data-l="en">Accounting Management, Level 2</span><em>Samil PwC</em></div>
+    </div>
+    <div>
+      <h4><span data-l="ko">해외 출장</span><span data-l="en">OVERSEAS ASSIGNMENTS</span></h4>
+      <div class="row"><span data-l="ko">슬로바키아 · 외관 불량 문제 해결</span><span data-l="en">Slovakia · Resolved a surface-defect issue</span><em>2025.11</em></div>
+      <div class="row"><span data-l="ko">튀르키예 · 작동 이상 문제 해결</span><span data-l="en">Türkiye · Resolved an operating-noise issue</span><em>2025.10</em></div>
+      <div class="row"><span data-l="ko">튀르키예 · 파손 문제 사전 예방</span><span data-l="en">Türkiye · Prevented a breakage issue in advance</span><em>2025.04</em></div>
+      <div class="row"><span data-l="ko">튀르키예 · 조립 불량 문제 해결</span><span data-l="en">Türkiye · Resolved an assembly-defect issue</span><em>2022.11</em></div>
+      <div class="row"><span data-l="ko">인도 · 외관·조립 불량 대량 해결</span><span data-l="en">India · Resolved a mass surface/assembly defect</span><em>2022.07</em></div>
     </div>
   </div>
 </section>
