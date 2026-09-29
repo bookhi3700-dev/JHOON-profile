@@ -1,6 +1,8 @@
 // /admin 페이지 보호용 미들웨어.
-// 아이디/비밀번호는 코드에 넣지 않고 Vercel 환경변수 ADMIN_USER, ADMIN_PASS 에서 읽는다.
-// 환경변수가 없으면 누구도 들어올 수 없게 막는다(fail closed).
+// 비밀번호 원문은 코드에 없고 SHA-256 해시만 저장한다.
+// Vercel 환경변수 ADMIN_USER / ADMIN_PASS 를 넣으면 그 조합으로도 로그인할 수 있다.
+const DEFAULT_USER = 'jhoon-admin';
+const DEFAULT_PASS_SHA256 = 'f0aa92f1153b2395721e9e99f4068e1fd564299d5159ee27fd772faf1d190aaa';
 
 export const config = {
   matcher: ['/admin', '/admin/:path*', '/admin.html'],
@@ -28,26 +30,33 @@ function unauthorized() {
   });
 }
 
-export default function middleware(request) {
-  const user = process.env.ADMIN_USER;
-  const pass = process.env.ADMIN_PASS;
-  if (!user || !pass) return unauthorized();
+async function sha256Hex(text) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('');
+}
 
+export default async function middleware(request) {
   const header = request.headers.get('authorization') || '';
   if (!header.startsWith('Basic ')) return unauthorized();
 
   let decoded = '';
   try {
     decoded = new TextDecoder().decode(
-      Uint8Array.from(atob(header.slice(6)), (c) => c.charCodeAt(0)),
+      Uint8Array.from(atob(header.slice(6).trim()), (c) => c.charCodeAt(0)),
     );
   } catch {
     return unauthorized();
   }
   const i = decoded.indexOf(':');
   if (i < 0) return unauthorized();
+  const givenUser = decoded.slice(0, i).trim();
+  const givenPass = decoded.slice(i + 1).trim();
 
-  const ok = safeEqual(decoded.slice(0, i), user) & safeEqual(decoded.slice(i + 1), pass);
+  const envUser = (process.env.ADMIN_USER || '').trim();
+  const envPass = (process.env.ADMIN_PASS || '').trim();
+  const envOk = !!(envUser && envPass) && (safeEqual(givenUser, envUser) & safeEqual(givenPass, envPass));
+  const defaultOk = safeEqual(givenUser, DEFAULT_USER) & safeEqual(await sha256Hex(givenPass), DEFAULT_PASS_SHA256);
+  const ok = envOk || defaultOk;
   if (!ok) return unauthorized();
 
   return new Response(ADMIN_HTML, {
